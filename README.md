@@ -1,15 +1,14 @@
-# Read Me First
-The following was discovered as part of building this project:
+# Spring boot with kafka example
 
-* The original package name 'com.va.spring.boot.kafka.spring-boot-kafka' is invalid and this project uses 'com.va.spring.boot.kafka.springbootkafka' instead.
+### Prerequisites
 
-# Getting Started
+* JDK 8
+* Maven 3.0+
+* Latest Docker installation
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### How to Run
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.12/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.12/maven-plugin/reference/html/#build-image)
-* [Spring for Apache Kafka](https://docs.spring.io/spring-boot/docs/2.7.12/reference/htmlsingle/#messaging.kafka)
+To start kafka: `docker-compose up -d`  
+Send a post request to the resource: `curl --location --request POST 'http://34.147.182.82:9001/kafka/publish?message=ALOHA'`  
+In the application console you will see the log `Consumed Message -> ALOHA` which signifies the message posted to the resource has been put on the kafka topic and then consumed by our application
 

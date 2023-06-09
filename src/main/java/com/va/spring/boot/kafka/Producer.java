@@ -16,16 +16,16 @@ public class Producer {
 	private String topicName;
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     public void sendMessage(String message) {
         logger.info(String.format("#### -> Producing message -> %s", message));
         this.kafkaTemplate.send(topicName, message);
     }
     
-    /*public void sendUserMessage(User user) {
+    public void sendUserMessage(User user) {
         logger.info(String.format("#### -> Producing message -> %s", user.getMessage()));
         this.kafkaTemplate.send(topicName, user);
-    }*/
+    }
 }
 

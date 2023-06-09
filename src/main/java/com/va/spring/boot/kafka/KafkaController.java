@@ -19,8 +19,8 @@ public class KafkaController {
         this.producer.sendMessage(message);
     }
     
-    /*@PostMapping(value = "/publishObj")
+    @PostMapping(value = "/publishObj")
     public void sendObjToKafkaTopic(@RequestBody User message) {
         this.producer.sendUserMessage(message);
-    }*/
+    }
 }

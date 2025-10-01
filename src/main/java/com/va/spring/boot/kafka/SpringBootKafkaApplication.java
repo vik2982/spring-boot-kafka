@@ -13,12 +13,5 @@ public class SpringBootKafkaApplication {
 		SpringApplication.run(SpringBootKafkaApplication.class, args);
 	}
 
-	@Value("${tpd.topic-name}")
-	private String topicName;
-
-	@Bean
-    public NewTopic adviceTopic() {
-        return new NewTopic(topicName, 1, (short) 1);
-    }
 }
 

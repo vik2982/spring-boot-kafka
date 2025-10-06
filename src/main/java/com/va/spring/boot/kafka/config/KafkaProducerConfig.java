@@ -53,4 +53,9 @@ public class KafkaProducerConfig {
         return new KafkaTemplate<>(greetingProducerFactory());
     }
 
+    @Bean(name = "defaultRetryTopicKafkaTemplate")
+    public KafkaTemplate<String, String> defaultRetryTopicKafkaTemplate() {
+        return new KafkaTemplate<>(producerFactory());
+    }
+
 }

@@ -1,4 +1,10 @@
-# Spring boot with kafka example
+# Event Driven Design Patterns implemented with Spring Boot
+
+This project demonstrates the following event driven architecture patterns:
+* **Communication** - Publish and subscribe
+* **Consumer scalability** - Consumer groups and partitioning
+* **Consumption** - Event filtering
+* **Error handling** - Retry and dead letter topic
 
 ## Prerequisites
 
@@ -23,13 +29,19 @@ mvn spring-boot:run
 ```
 curl --location --request POST 'http://localhost:9001/kafka/publish?message=Hello jon'
 ```
-In the application console you will see consumers in both groups (group_id1 and group_id2) have consumed the message<br/>
+In the application console you will see consumers in group_id1/2 have consumed the message<br/>
 
 ### Test the filter consumer:
 ```
 curl --location --request POST 'http://localhost:9001/kafka/publish?message=Hello world'
 ```
-In the application console you will see the message is only consumed by consumer group_id1 <br/>
+In the application console you will see the message is not consumed by consumer group_id2 <br/>
+
+### Test retry logic:
+```
+curl --location --request POST 'http://localhost:9001/kafka/publish?message=Hello retry'
+```
+You can see in the console the logic is retried as configured for group_id3 and on exhaustion the dlt handler is invoked
 
 ### Test custom object
 ```

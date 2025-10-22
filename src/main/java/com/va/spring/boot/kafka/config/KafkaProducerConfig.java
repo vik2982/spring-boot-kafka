@@ -53,6 +53,9 @@ public class KafkaProducerConfig {
         return new KafkaTemplate<>(greetingProducerFactory());
     }
 
+    /* Used by @RetryableTopic in consumer
+    NOTE defaultRetryTopicKafkaTemplate is the default name for kafkaTemplate attribute in @RetryableTopic.
+    NOTE In a typical setup producer and consumer would be in seperate services and this bean would be in the consumer service*/
     @Bean(name = "defaultRetryTopicKafkaTemplate")
     public KafkaTemplate<String, String> defaultRetryTopicKafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());

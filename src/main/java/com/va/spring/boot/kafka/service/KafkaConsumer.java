@@ -47,8 +47,8 @@ public class KafkaConsumer {
 
     @DltHandler
     public void processDlt(String message) {
-        System.err.println("Message moved to DLT after failed retries: " + message);
-        // TODO - send message to dead letter topic
+        System.err.println("All retries exhausted.  Following message picked up from DLT: " + message);
+
     }
 
     @KafkaListener(topics = "topic2", containerFactory = "greetingKafkaListenerContainerFactory")

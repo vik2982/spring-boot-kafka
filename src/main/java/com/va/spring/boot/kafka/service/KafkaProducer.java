@@ -27,6 +27,8 @@ public class KafkaProducer {
 
     public void sendMessage(String msg) {
         kafkaTemplate.send(topicName, msg);
+        //Following line includes sending of partition key
+        //kafkaTemplate.send(topic, key, msg);
     }
 
     public void sendCustomMessage(String msg, String name) {

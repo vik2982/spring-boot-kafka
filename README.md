@@ -8,7 +8,7 @@ This project demonstrates the following event driven architecture patterns:
 
 ## Prerequisites
 
-* JDK 24
+* JDK 25
 * Maven Latest version
 * Latest Docker installation
 
@@ -21,6 +21,19 @@ docker-compose up -d
 To start microservice:
 ```
 mvn spring-boot:run
+```
+
+## Create Kafka topic partitions
+
+If we run the kafka describe command on the topics which have been created by spring boot we will see only one partition has been created by default  for each topic. 
+We can create topic1 with multiple partitions as follows (stop the microservice first):
+```
+docker exec -it container_id /bin/bash
+cd /opt/kafka/bin 
+./kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic topic1
+./kafka-topics.sh --bootstrap-server localhost:9092 --topic topic1 --create --partitions 3 --replication-factor 1
+./kafka-topics.sh --bootstrap-server localhost:9092 --list
+./kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic topic1 
 ```
 
 ## How to Test
